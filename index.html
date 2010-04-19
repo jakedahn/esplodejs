@@ -3,76 +3,10 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Esplode - in ProcessingJS</title>
-    <script src="processing.init.js" type="text/javascript" charset="utf-8"></script>
     <script src="processing.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="esplode.js" type="application/processing" charset="utf-8"></script>
+    
   </head>
   <body>
-    <script type="application/processing" charset="utf-8">
-      // Global variables
-      float radius = 50.0;
-      int X, Y;
-      int nX, nY;
-      int delay = 16;
-
-      // Setup the Processing Canvas
-      void setup(){
-        size( 500, 500 );
-        strokeWeight( 10 );
-        frameRate( 15 );
-        X = width / 2;
-        Y = width / 2;
-        nX = X;
-        nY = Y;  
-      }
-
-      // Main draw loop
-      void draw(){
-
-        radius = radius + sin( frameCount / 4 );
-
-        // Track circle to new destination
-        X+=(nX-X)/delay;
-        Y+=(nY-Y)/delay;
-
-        // Fill canvas grey
-        background( 100 );
-
-        // Set fill-color to blue
-        fill( 0, 121, 184 );
-
-        // Set stroke-color white
-        stroke(255); 
-
-        // Draw circle
-        ellipse( X, Y, radius, radius );                  
-      }
-      
-
-      // Set circle's next destination
-      void mouseMoved(){
-        nX = mouseX;
-        nY = mouseY;  
-      }
-      
-      void createElipse(){
-        var colorArray:Array = new Array(0xFFFF33, 0xFFFFFF, 0x79DCF4, 0xFF3333, 0xFFCC33, 0x99CC33);
-
-        /*r = colorArray[0] << 8 && 0x*/
-        // bitwse + bitmasking colorPicker
-
-        var randomColor:Number = Math.floor(Math.random()*colorArray.length);
-        var ellipse:Sprite = new Sprite();
-
-        ellipse.graphics.beginFill(colorArray[randomColor]);
-        ellipse.graphics.drawCircle(Math.random()*1000, Math.random()*1000, 100);    
-
-        ellipse.alpha = 1;
-        ellipse.scaleX = 0;
-        ellipse.scaleY = 0;
-        
-      }
-    </script>
-    <canvas width="500" height="500"></canvas>
+    <canvas datasrc="esplode.js" width="500" height="500"></canvas>
   </body>
 </html>
